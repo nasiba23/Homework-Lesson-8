@@ -29,7 +29,7 @@ namespace HomeworkLesson8
                     string middleName1 = Console.ReadLine();
                     Console.Write("Birthdate: ");
                     string birthDate1 = Console.ReadLine();
-                    string sqlExpressionAdd = $"INSERT INTO PEOPLE LastName = {lastName1}, FirstName = {firstName1}, MiddleName = {middleName1}, BirthDate = {birthDate1}";
+                    string sqlExpressionAdd = $"INSERT INTO PEOPLE (LastName , FirstName, MiddleName, BirthDate) VALUES ('{lastName1}', '{firstName1}', '{middleName1}', '{birthDate1}')";
                     SqlCommand addCommand = new SqlCommand(sqlExpressionAdd, connection);
                     number = addCommand.ExecuteNonQuery();
                     Console.WriteLine("Added: {0}", number);
@@ -76,9 +76,10 @@ namespace HomeworkLesson8
                     string middleName2 = Console.ReadLine();
                     Console.Write("New BirthDate: ");
                     string birthDate2 = Console.ReadLine();
-                    string sqlExpressionUpdate = $"UPDATE PEOPLE LastName = {lastName2}, FirstName = {firstName2}, MiddleName = {middleName2}, BirtDate = {birthDate2}";
-                    SqlCommand updateCommand = new SqlCommand(sqlExpressionUpdate);
+                    string sqlExpressionUpdate = $"UPDATE PEOPLE SET LastName='{lastName2}', FirstName='{firstName2}', MiddleName='{middleName2}', BirthDate='{birthDate2}' WHERE Id={id3}";
+                    SqlCommand updateCommand = new SqlCommand(sqlExpressionUpdate, connection);
                     number = updateCommand.ExecuteNonQuery();
+                    Console.WriteLine("Added: {0}", number);
                     break;
                 }
             }
